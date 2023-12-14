@@ -2,7 +2,7 @@ from uuid import UUID, uuid4
 from typing import List
 from fastapi import FastAPI, HTTPException
 
-from models import Gender, Role, UpdateUser, User
+from models import News
 
 
 app = FastAPI()
