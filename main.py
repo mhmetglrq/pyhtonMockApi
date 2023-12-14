@@ -4,24 +4,25 @@ from fastapi import FastAPI, HTTPException
 
 from models import Gender, Role, UpdateUser, User
 
+
 app = FastAPI()
 
 db: List[News] = [
-    News(title:"En Son Teknoloji Haberleri",description: "Yeni nesil yapay zeka teknolojileri hakkında güncel bilgiler.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Sağlıklı Yaşam İpuçları",description: "Düzenli egzersiz ve sağlıklı beslenmeyle ilgili pratik öneriler.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Moda Dünyasında Son Trendler", description:"Mevsimin en popüler giyim ve aksesuar modası.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Bilimde Yeni Keşifler",description: "Güneş sistemi dışında yeni bir gezegenin keşfi.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Finans Haberleri ve Analiz",description: "Piyasa güncellemeleri ve ekonomik analizler.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Seyahat Rehberi: Roma",description: "Roma'da gezilecek yerler ve yerel lezzetler.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Film İncelemesi: 'Yitik Şehir'",description: "Yeni çıkan filmin detaylı bir incelemesi.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Spor Gündemi: Futbol Transferleri",description: "Futbol dünyasındaki en son transfer haberleri.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Yemek Tarifi: Avokado Salatası",description: "Sağlıklı ve lezzetli avokado salatasının tarifi.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Teknoloji İncelemesi: Akıllı Telefon XYZ",description: "Yeni çıkan akıllı telefonun detaylı incelemesi.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Doğa Fotoğrafçılığı: Renkli Sonbahar",description: "Sonbaharda doğanın muhteşem renk paleti.", "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Sağlık Bilgisi: Yoga ve Stres Yönetimi",description: "Yoga pratiğinin stresle başa çıkma üzerindeki etkileri.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Oyun İncelemesi: 'Fantastik Macera'",description: "Yeni çıkan video oyununun detaylı incelemesi.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Eğitim Haberleri: Uzaktan Eğitim Yenilikleri",description: "Dijital eğitimde en son gelişmeler ve yenilikler.",imageUrl: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-    News(title:"Sanat Galerisi: Modern Sanat Sergisi",description: "Güncel sanat eserlerinin sergilendiği etkinlik.",coverImg: "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="En Son Teknoloji Haberleri",description= "Yeni nesil yapay zeka teknolojileri hakkında güncel bilgiler.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Sağlıklı Yaşam İpuçları",description= "Düzenli egzersiz ve sağlıklı beslenmeyle ilgili pratik öneriler.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Moda Dünyasında Son Trendler", description="Mevsimin en popüler giyim ve aksesuar modası.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Bilimde Yeni Keşifler",description= "Güneş sistemi dışında yeni bir gezegenin keşfi.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Finans Haberleri ve Analiz",description= "Piyasa güncellemeleri ve ekonomik analizler.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Seyahat Rehberi: Roma",description= "Roma'da gezilecek yerler ve yerel lezzetler.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Film İncelemesi: 'Yitik Şehir'",description= "Yeni çıkan filmin detaylı bir incelemesi.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Spor Gündemi: Futbol Transferleri",description= "Futbol dünyasındaki en son transfer haberleri.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Yemek Tarifi: Avokado Salatası",description= "Sağlıklı ve lezzetli avokado salatasının tarifi.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Teknoloji İncelemesi: Akıllı Telefon XYZ",description= "Yeni çıkan akıllı telefonun detaylı incelemesi.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Doğa Fotoğrafçılığı: Renkli Sonbahar",description= "Sonbaharda doğanın muhteşem renk paleti.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Sağlık Bilgisi: Yoga ve Stres Yönetimi",description= "Yoga pratiğinin stresle başa çıkma üzerindeki etkileri.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Oyun İncelemesi: 'Fantastik Macera'",description= "Yeni çıkan video oyununun detaylı incelemesi.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Eğitim Haberleri: Uzaktan Eğitim Yenilikleri",description= "Dijital eğitimde en son gelişmeler ve yenilikler.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+    News(title="Sanat Galerisi: Modern Sanat Sergisi",description= "Güncel sanat eserlerinin sergilendiği etkinlik.",imageUrl= "https://images.pexels.com/photos/159652/table-food-book-newspaper-159652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
     
 
 
